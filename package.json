@@ -1,11 +1,11 @@
 {
-    "name": "Chat-o-matic",
+    "name": "chat-o-matic",
     "version": "1.0.0",
     "description": "Real-time chat application",
     "scripts": {
         "build": "",
         "dev": "nodemon server.js",
-        "start": "node bin/server.js"
+        "start": "node server.js"
     },
     "repository": {
         "type": "git",
@@ -31,6 +31,7 @@
     "dependencies": {
         "dateformat": "^3.0.3",
         "express": "^4.16.4",
+        "mongoose": "^5.4.5",
         "nconf": "^0.10.0",
         "socket.io": "^2.2.0",
         "winston": "^3.1.0",

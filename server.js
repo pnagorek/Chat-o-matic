@@ -6,33 +6,43 @@ const io = require('socket.io')(server);
 const logger = require('./commons/logger');
 const config = require('./configuration/config');
 const appName = require('./package.json').name;
+const db = require('./server/database/index');
 
-const PORT = config.get('PORT') || 3000; // config
+const usersRouter = require('./server/routing/users');
 
-app.use(express.static('server/public'));
+const PORT = config.get('PORT') || 3000;
 
-// TODO routing in separate file
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
+app.use(express.static('public'));
+app.use('/users', usersRouter);
+
+server.on('error', (e) => {
+  logger.error(`Server error: ${e.message}`);
+  process.exit(1);
 });
 
-const startServer = (callback) => {
+const greetingMessage = () => {
+  logger.info('===========================================');
+  logger.info(`${appName.toUpperCase()} initialized and ready to work`);
+  logger.info('===========================================');
+};
+
+const startServer = () => {
   server.listen(PORT, () => {
     logger.info(`Server is listening on port ${PORT}`);
-    callback();
+    greetingMessage();
   });
 };
 
-const init = (callback) => {
+const init = () => {
   // TODO init socket.io
 
-  // TODO establish db connection
-
-  startServer(callback);
+  db.init()
+    .then(() => {
+      startServer();
+    })
+    .catch(() => {
+      process.exit(1);
+    });
 };
 
-init(() => {
-  logger.info('===========================================');
-  logger.info(`${appName} initialized and ready to work`);
-  logger.info('===========================================');
-});
+init();

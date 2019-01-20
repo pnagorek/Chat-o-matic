@@ -3,5 +3,6 @@ module.exports = {
   parser: 'babel-eslint',
   rules: {
     'linebreak-style': ['error', 'windows'],
+    'no-underscore-dangle': 0,
   },
 };
