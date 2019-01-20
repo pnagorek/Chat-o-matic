@@ -1,0 +1,39 @@
+{
+    "name": "Chat-o-matic",
+    "version": "1.0.0",
+    "description": "Real-time chat application",
+    "scripts": {
+        "build": "",
+        "dev": "nodemon server.js",
+        "start": "node bin/server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pnagorek/Chat-o-matic.git"
+    },
+    "author": "Przemyslaw Nagorek",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/pnagorek/Chat-o-matic/issues"
+    },
+    "homepage": "https://github.com/pnagorek/Chat-o-matic#readme",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-eslint": "^10.0.1",
+        "babel-preset-env": "^1.7.0",
+        "eslint": "^5.12.1",
+        "eslint-config-airbnb": "^17.1.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-jsx-a11y": "^6.1.2",
+        "eslint-plugin-react": "^7.12.4",
+        "nodemon": "^1.18.9"
+    },
+    "dependencies": {
+        "dateformat": "^3.0.3",
+        "express": "^4.16.4",
+        "nconf": "^0.10.0",
+        "socket.io": "^2.2.0",
+        "winston": "^3.1.0",
+        "winston-daily-rotate-file": "^3.6.0"
+    }
+}
