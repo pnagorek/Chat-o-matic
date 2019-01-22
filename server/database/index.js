@@ -10,6 +10,7 @@ const pass = config.get('DB_PASS');
 const init = () => new Promise((resolve, reject) => {
   logger.info(`Connecting to database '${dbName}'...`);
 
+  mongoose.set('useCreateIndex', true);
   mongoose
     .connect(
       config.get('DB_CONNECTION_STRING'),

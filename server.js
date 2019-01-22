@@ -7,6 +7,7 @@ const logger = require('./commons/logger');
 const config = require('./configuration/config');
 const appName = require('./package.json').name;
 const db = require('./server/database/index');
+const socket = require('./server/communication/socket');
 
 const usersRouter = require('./server/routing/users');
 
@@ -34,8 +35,7 @@ const startServer = () => {
 };
 
 const init = () => {
-  // TODO init socket.io
-
+  socket.init(io);
   db.init()
     .then(() => {
       startServer();
