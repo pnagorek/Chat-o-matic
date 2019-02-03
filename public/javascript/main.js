@@ -31,6 +31,9 @@ this.document.addEventListener('DOMContentLoaded', () => {
             socket.removeListener(currentRoom);
             socket.emit('joinRoom', { roomName: event.target.innerHTML });
             currentRoom = event.target.innerHTML;
+            this.document.getElementById(
+              'room-header',
+            ).innerHTML = `CURRENT ROOM: '${currentRoom}'`;
             this.document.getElementById('chat').innerHTML = '';
             const div1 = this.document.createElement('li');
             div1.innerHTML = `Joined new room: '${currentRoom}'`;
