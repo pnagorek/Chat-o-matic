@@ -12,7 +12,7 @@ const init = (io) => {
       for (let i = 0; i < onlineUsers.length; i += 1) {
         if (onlineUsers[i].socket === socket) {
           logger.info(`User logged off: ${onlineUsers[i].username}`);
-          socket.broadcast.emit(constants.LOBBY, {
+          socket.broadcast.emit(onlineUsers[i].room, {
             message: `User logged off: ${onlineUsers[i].username}`,
           });
           onlineUsers.splice(i, 1);
@@ -26,11 +26,21 @@ const init = (io) => {
       onlineUsers.push({
         username: data.username,
         socket,
+        room: 'lobby',
       });
     });
 
     socket.on(constants.MSG, (data) => {
-      io.emit(constants.LOBBY, { message: `${data.message}` });
+      for (let i = 0; i < onlineUsers.length; i += 1) {
+        if (onlineUsers[i].socket === socket) {
+          if (onlineUsers[i].room === 'lobby') {
+            io.emit(constants.LOBBY, { message: `${data.message}` });
+            break;
+          } else {
+            io.to(onlineUsers[i].room).emit(onlineUsers[i].room, { message: `${data.message}` });
+          }
+        }
+      }
     });
 
     socket.on(constants.PM, (data) => {
@@ -39,6 +49,22 @@ const init = (io) => {
           socket.broadcast
             .to(onlineUsers[i].socket.id)
             .emit(constants.PM, { message: `${data.message}` });
+        }
+      }
+    });
+
+    socket.on('joinRoom', (data) => {
+      for (let i = 0; i < onlineUsers.length; i += 1) {
+        if (onlineUsers[i].socket === socket) {
+          io.to(data.roomName).emit(data.roomName, {
+            message: `${onlineUsers[i].username} joined.`,
+          });
+          socket.leave(onlineUsers[i].room);
+          io.to(onlineUsers[i].room).emit(onlineUsers[i].room, {
+            message: `${onlineUsers[i].username} left.`,
+          });
+          socket.join(data.roomName);
+          onlineUsers[i].room = data.roomName;
         }
       }
     });

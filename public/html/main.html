@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Chat-o-matic</title>
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/javascript/main.js"></script>
+    </head>
+    <body>
+        <div>
+            <h1 id="title">Chat-o-matic</h1>
+            <h2 id="user-welcome"></h2>
+        </div>
+        <div id="content">
+            <div id="content-rooms">
+                <div class="content-inner">
+                    <div id="rooms-wrapper"><ul id="rooms"></ul></div>
+                    <div id="input-room-wrapper">
+                        <input
+                            id="room-message"
+                            type="text"
+                            placeholder="Create a room"
+                        />
+                    </div>
+                    <button id="create-room-button">Create</button>
+                </div>
+            </div>
+            <div id="content-chat">
+                <div id="form-wrapper">
+                    <div id="chat-wrapper"><ul id="chat"></ul></div>
+                    <form id="form">
+                        <div id="form-input">
+                            <button id="send-button">Send</button>
+                            <div id="input-wrapper">
+                                <input
+                                    id="message"
+                                    type="text"
+                                    placeholder="Send a message"
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="content-users">
+                <div class="content-inner">
+                    <div id="users-wrapper"><ul id="users"></ul></div>
+                    <div id="input-users-wrapper">
+                        <input
+                            id="user-message"
+                            type="text"
+                            placeholder="Add a friend"
+                        />
+                    </div>
+                    <button id="add-user-button">Add</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

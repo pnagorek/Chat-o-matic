@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+body {
+    font: 13px Helvetica, Arial;
+    background-color: #6441a4;
+    color: white;
+}
+
+#title {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#user-welcome {
+    float: right;
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+#content {
+    display: flex;
+    position: absolute;
+    top: 66px; /* Header Height */
+    bottom: 0px; /* Footer Height */
+    width: 100%;
+}
+
+#content-rooms,
+#content-users {
+    background-color: #000;
+    width: 12%;
+}
+
+#content-rooms {
+    padding: 50px 5px 36px 20px;
+}
+
+#content-users {
+    padding: 50px 20px 36px 5px;
+}
+
+#content-chat {
+    background-color: #000;
+    width: 76%;
+}
+
+#form-wrapper {
+    background-color: #19171c;
+    margin: 50px 25px 50px;
+    height: 90%;
+    position: relative;
+}
+
+form {
+    background: #19171c;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#form-input {
+    margin: 10px;
+}
+
+#send-button {
+    padding: 10px;
+    width: 50px;
+    float: right;
+    background: #6441a4;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+}
+
+#create-room-button {
+    padding: 10px;
+    margin: 10px;
+    background: #6441a4;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+}
+
+#add-user-button {
+    padding: 10px;
+    margin: 10px;
+    background: #6441a4;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+}
+
+#input-wrapper {
+    overflow: hidden;
+    padding-right: 20px;
+}
+
+#input-room-wrapper {
+    overflow: hidden;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+#input-users-wrapper {
+    overflow: hidden;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+#message {
+    padding: 10px 0px 10px 10px;
+    width: 100%;
+    background: #0f0e11;
+    border: 1px solid #392e5c;
+    color: white;
+    border-radius: 4px !important;
+}
+
+#room-message {
+    padding: 10px 0px 10px 10px;
+    width: 100%;
+    background: #0f0e11;
+    border: 1px solid #392e5c;
+    color: white;
+    border-radius: 4px !important;
+}
+
+#user-message {
+    padding: 10px 0px 10px 10px;
+    width: 100%;
+    background: #0f0e11;
+    border: 1px solid #392e5c;
+    color: white;
+    border-radius: 4px !important;
+}
+
+#chat-wrapper {
+    padding: 10px;
+    height: 85%;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+#rooms-wrapper {
+    padding: 10px;
+    height: 85%;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+#users-wrapper {
+    padding: 10px;
+    height: 85%;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+.content-inner {
+    height: 100%;
+    background: #19171c;
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #19171c;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* +++++++++++++ */
+
+#chat,
+#rooms,
+#users {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    margin-bottom: 40px;
+}
+#chat li,
+#rooms li,
+#users li {
+    padding: 5px 10px;
+}
+
+/*icon bar*/
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #000; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+}
+
+.icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+}
+
+.icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+}
+
+.active {
+    background-color: #4caf50; /* Add an active/current color */
+}

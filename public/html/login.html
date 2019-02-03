@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Chat-o-matic - Login</title>
         <link rel="stylesheet" type="text/css" href="/css/login.css" />
+        <script src="/javascript/login.js"></script>
     </head>
     <body>
         <div class="content">
@@ -15,31 +16,56 @@
                     <h1 style="color:white;">LOGIN</h1>
                     <label>Username</label>
                     <input
+                        id="login-username"
                         type="text"
                         name="username"
                         placeholder="Username..."
+                        class="tooltip"
                     />
                     <label>Password</label>
                     <input
+                        id="login-password"
                         type="password"
                         name="password"
                         placeholder="Password..."
                     />
-                    <button class="button">Log in</button>
+                    <button id="login-button" class="button">Log in</button>
                 </form>
             </div>
             <div id="content-right" class="content content-column">
-                <form id="register-form">
+                <form id="register-form" method="post" action="/users/register">
                     <h1>REGISTER</h1>
                     <label>Username</label>
-                    <input type="text" placeholder="Username..." />
+                    <input
+                        id="register-username"
+                        type="text"
+                        name="username"
+                        placeholder="Username..."
+                    />
                     <label>Email</label>
-                    <input type="email" placeholder="Email..." />
+                    <input
+                        id="register-email"
+                        type="email"
+                        name="email"
+                        placeholder="Email..."
+                    />
                     <label>Password</label>
-                    <input type="password" placeholder="Password..." />
+                    <input
+                        id="register-password"
+                        type="password"
+                        name="password"
+                        placeholder="Password..."
+                    />
                     <label>Confirm password</label>
-                    <input type="password" placeholder="Confirm password..." />
-                    <button class="button">Register & log in</button>
+                    <input
+                        id="register-confirm-password"
+                        type="password"
+                        name="confirmPassword"
+                        placeholder="Confirm password..."
+                    />
+                    <button id="register-button" class="button">
+                        Register & log in
+                    </button>
                 </form>
             </div>
         </div>

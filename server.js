@@ -14,6 +14,7 @@ const db = require('./server/database/index');
 const socket = require('./server/communication/socket');
 
 const usersRouter = require('./server/routing/users');
+const roomsRouter = require('./server/routing/rooms');
 
 const PORT = config.get('PORT') || 3000;
 
@@ -21,7 +22,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-app.use(session({ secret: 'cats' }));
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+  }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -37,11 +44,21 @@ app.post(
   }),
 );
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'html', 'index.html'));
-});
+app.get(
+  '/',
+  (req, res, next) => {
+    if (!req.user) {
+      return res.redirect('/login');
+    }
+    next();
+  },
+  (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'html', 'main.html'));
+  },
+);
 
 app.use('/users', usersRouter);
+app.use('/rooms', roomsRouter);
 
 server.on('error', (e) => {
   logger.error(`Server error: ${e.message}`);

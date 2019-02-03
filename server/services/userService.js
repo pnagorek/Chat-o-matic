@@ -3,16 +3,18 @@ const User = require('../database/models/user');
 
 const createUser = user => new Promise((resolve, reject) => {
   const newUser = new User({
-    name: user.name,
+    username: user.username,
+    email: user.email,
+    password: user.password,
   });
   newUser
     .save()
     .then((createdUser) => {
-      logger.info(`New user '${user.name}' created successfully.`);
+      logger.info(`New user '${user.username}' created successfully.`);
       resolve(createdUser);
     })
     .catch((err) => {
-      logger.error(`Creation of user '${user.name}' failed: ${err.message}`);
+      logger.error(`Creation of user '${user.username}' failed: ${err.message}`);
       reject(err);
     });
 });
@@ -29,14 +31,14 @@ const _getUsers = condition => new Promise((resolve, reject) => {
     });
 });
 
-const findUserByName = name => _getUsers({ name });
+const findUserByName = username => _getUsers({ username });
 
 const findAllUsers = () => _getUsers({});
 
 // TODO update
 
-const deleteUserByName = name => new Promise((resolve, reject) => {
-  User.deleteOne({ name })
+const deleteUserByName = username => new Promise((resolve, reject) => {
+  User.deleteOne({ username })
     .then((deletedRecords) => {
       logger.info('Query to delete user executed successfully.');
       if (deletedRecords.deletedCount === 0) {
